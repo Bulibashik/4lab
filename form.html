@@ -2,122 +2,128 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Форма анкеты</title>
+<title>Анкета</title>
+
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #fceff9, #e0f7fa);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fceff9, #e0f7fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .container {
-        background: #ffffff;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        width: 400px;
-    }
+.container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 420px;
+}
 
-    h2 {
-        text-align: center;
-        color: #b76e79;
-    }
+h2 {
+    text-align: center;
+    color: #b76e79;
+}
 
-    label {
-        display: block;
-        margin-top: 10px;
-        color: #555;
-    }
+label {
+    display: block;
+    margin-top: 10px;
+}
 
-    input, textarea, select {
-        width: 100%;
-        padding: 8px;
-        margin-top: 5px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-    }
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
 
-    textarea {
-        resize: none;
-        height: 80px;
-    }
+textarea {
+    height: 80px;
+    resize: none;
+}
 
-    .radio-group {
-        display: flex;
-        gap: 10px;
-    }
+.radio-group {
+    display: flex;
+    gap: 10px;
+}
 
-    button {
-        margin-top: 15px;
-        width: 100%;
-        padding: 10px;
-        background: #f8bbd0;
-        border: none;
-        border-radius: 10px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-    }
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background: #f8bbd0;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
 
-    button:hover {
-        background: #f48fb1;
-    }
+button:hover {
+    background: #f48fb1;
+}
 </style>
+
 </head>
-
 <body>
+
 <div class="container">
-    <h2>Анкета</h2>
+<h2>Анкета</h2>
 
-    <form action="submit.php" method="POST">
+<form action="submit.php" method="POST">
 
-        <label>ФИО:</label>
-        <input type="text" name="name" required>
+    <label>ФИО:</label>
+    <input type="text" name="name" required>
 
-        <label>Телефон:</label>
-        <input type="tel" name="phone" required>
+    <label>Телефон:</label>
+    <input type="tel" name="phone"
+           pattern="\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}"
+           placeholder="+7(999)123-45-67"
+           required>
 
-        <label>Email:</label>
-        <input type="email" name="email" required>
+    <label>Email:</label>
+    <input type="email" name="email" required>
 
-        <label>Дата рождения:</label>
-        <input type="date" name="birthdate" required>
+    <label>Дата рождения:</label>
+    <input type="date" name="birthdate" required>
 
-        <label>Пол:</label>
-        <div class="radio-group">
-            <label><input type="radio" name="gender" value="male"> М</label>
-            <label><input type="radio" name="gender" value="female"> Ж</label>
-        </div>
+    <label>Пол:</label>
+    <div class="radio-group">
+        <label><input type="radio" name="gender" value="male" required> М</label>
+        <label><input type="radio" name="gender" value="female"> Ж</label>
+    </div>
 
-        <label>Любимые языки:</label>
-        <select name="languages[]" multiple required>
-            <option>Pascal</option>
-            <option>C</option>
-            <option>C++</option>
-            <option>JavaScript</option>
-            <option>PHP</option>
-            <option>Python</option>
-            <option>Java</option>
-            <option>Haskell</option>
-            <option>Clojure</option>
-            <option>Prolog</option>
-            <option>Scala</option>
-            <option>Go</option>
-        </select>
+    <label>Любимые языки (Ctrl для выбора нескольких):</label>
+    <select name="languages[]" multiple size="6" required>
+        <option>Pascal</option>
+        <option>C</option>
+        <option>C++</option>
+        <option>JavaScript</option>
+        <option>PHP</option>
+        <option>Python</option>
+        <option>Java</option>
+        <option>Haskell</option>
+        <option>Clojure</option>
+        <option>Prolog</option>
+        <option>Scala</option>
+        <option>Go</option>
+    </select>
 
-        <label>Биография:</label>
-        <textarea name="bio"></textarea>
+    <label>Биография:</label>
+    <textarea name="bio"></textarea>
 
-        <label>
-            <input type="checkbox" name="contract" required>
-            С контрактом ознакомлен(а)
-        </label>
+    <label>
+        <input type="checkbox" name="contract" required>
+        С контрактом ознакомлен(а)
+    </label>
 
-        <button type="submit">Сохранить</button>
-    </form>
+    <button type="submit">Сохранить</button>
+
+</form>
 </div>
+
 </body>
 </html>
