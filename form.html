@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Форма анкеты</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #fceff9, #e0f7fa);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #b76e79;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+        color: #555;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+
+    textarea {
+        resize: none;
+        height: 80px;
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 10px;
+    }
+
+    button {
+        margin-top: 15px;
+        width: 100%;
+        padding: 10px;
+        background: #f8bbd0;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #f48fb1;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h2>Анкета</h2>
+
+    <form action="submit.php" method="POST">
+
+        <label>ФИО:</label>
+        <input type="text" name="name" required>
+
+        <label>Телефон:</label>
+        <input type="tel" name="phone" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Дата рождения:</label>
+        <input type="date" name="birthdate" required>
+
+        <label>Пол:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="male"> М</label>
+            <label><input type="radio" name="gender" value="female"> Ж</label>
+        </div>
+
+        <label>Любимые языки:</label>
+        <select name="languages[]" multiple required>
+            <option>Pascal</option>
+            <option>C</option>
+            <option>C++</option>
+            <option>JavaScript</option>
+            <option>PHP</option>
+            <option>Python</option>
+            <option>Java</option>
+            <option>Haskell</option>
+            <option>Clojure</option>
+            <option>Prolog</option>
+            <option>Scala</option>
+            <option>Go</option>
+        </select>
+
+        <label>Биография:</label>
+        <textarea name="bio"></textarea>
+
+        <label>
+            <input type="checkbox" name="contract" required>
+            С контрактом ознакомлен(а)
+        </label>
+
+        <button type="submit">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>
